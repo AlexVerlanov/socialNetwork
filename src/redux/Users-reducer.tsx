@@ -121,9 +121,9 @@ export const ToggleFeathingProherssAC = (
 export const getUsersTC = (page: number, pageSize: number) => {
   return async (dispatch: Dispatch<ActionTypes>) => {
     dispatch(setCurrentAC(page));
-    dispatch(ToggleFeathingAC(true));
+    // dispatch(ToggleFeathingAC(true));
     let data = await usersAPI.getUsers(page, pageSize);
-    dispatch(ToggleFeathingAC(false));
+    // dispatch(ToggleFeathingAC(false));
     dispatch(setUsersAC(data.items));
     dispatch(setUsersTotalCountAC(data.totalCount));
   };
