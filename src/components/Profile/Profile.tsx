@@ -1,66 +1,120 @@
 import React from "react";
 import styled from "styled-components";
-import { PostsType, type ProfileType } from "../../redux/Profile-reducer";
+import type { ProfileType } from "../../redux/Profile-reducer";
 import { Preloader } from "../common/Prealoader/Preloader";
+import userPhoto from "../../assets/img/photo.png";
 
-// Стили для компонента профиля
+/* ——— styles ——— */
+
 const ProfileContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   padding: 20px;
 `;
 
 const ImageWrapper = styled.div`
   width: 100%;
-  max-width: 100%;
-  height: auto;
+  max-width: 2260px; /* чтобы содержимое не растягивалось бесконечно */
   position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 20px; // Добавляем отступ снизу, чтобы разделить изображение и текст
+  margin-bottom: 90px; /* место под «нависающий» аватар */
 `;
 
-const SunImage = styled.img`
+const Banner = styled.img`
   width: 100%;
-  height: auto;
+  height: 70vh; /* займёт 40% от высоты экрана */
   object-fit: cover;
   border-radius: 10px;
+  display: block;
 `;
 
-const ProfileImage = styled.img`
-  width: 150px;
-  height: 150px;
+const Avatar = styled.img<{ $hasAvatar: boolean }>`
+  position: absolute;
+  left: 24px;
+  bottom: -135px; /* Уменьшаем отступ, чтобы аватарка опустилась ниже */
+  width: 380px;
+  height: 380px;
   border-radius: 50%;
   object-fit: cover;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  transform: translateY(10px);
-  margin-bottom: 10px; // Добавляем отступ снизу
+  border: 4px solid #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  @media (max-width: 2624px) {
+    width: 200px;
+    height: 200px;
+    bottom: -240px;
+    left: 18px;
+  }
+  @media (max-width: 2224px) {
+    width: 200px;
+    height: 200px;
+    bottom: -150px;
+    left: 18px;
+  }
+  @media (max-width: 2024px) {
+    width: 200px;
+    height: 200px;
+    bottom: -240px;
+    left: 18px;
+  }
+  @media (max-width: 1524px) {
+    width: 200px;
+    height: 200px;
+    bottom: -220px;
+    left: 18px;
+  }
+  @media (max-width: 1024px) {
+    width: 130px;
+    height: 130px;
+    bottom: -150px;
+    left: 18px;
+  }
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+    bottom: -150px;
+    left: 16px;
+  }
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+    bottom: -150px;
+    left: 12px;
+  }
 `;
 
-type Profile = {
-  profile: ProfileType;
+/* ——— component ——— */
+
+type ProfileProps = {
+  profile: ProfileType | null | undefined;
 };
 
-export const Profile = (props: Profile) => {
-  if (!props.profile || !props.profile.photos || !props.profile.photos.large) {
-    return (
-      <div>
-        <Preloader />
-      </div>
-    ); // Показываем сообщение о загрузке
+export const Profile: React.FC<ProfileProps> = ({ profile }) => {
+  // можно показать прелоадер, если профиля ещё нет вовсе
+  if (profile == null) {
+    return <Preloader />;
   }
+
+  const hasAvatar = Boolean(profile.photos?.large);
+  const avatarSrc = hasAvatar ? (profile.photos!.large as string) : userPhoto;
+
   return (
     <ProfileContainer>
       <ImageWrapper>
-        <SunImage
+        <Banner
           src="https://avatanplus.com/files/resources/original/5b7c1efd295881655cd90cf1.jpg"
-          alt="Sunset"
+          alt="Cover"
         />
-        <ProfileImage src={props.profile.photos.large} alt="Profile" />
+
+        <Avatar
+          $hasAvatar={hasAvatar}
+          src={avatarSrc}
+          alt="Profile"
+          // если серверная аватарка битая — подставим заглушку
+          onError={(e) => {
+            if ((e.currentTarget as HTMLImageElement).src !== userPhoto) {
+              (e.currentTarget as HTMLImageElement).src = userPhoto;
+            }
+          }}
+        />
       </ImageWrapper>
     </ProfileContainer>
   );

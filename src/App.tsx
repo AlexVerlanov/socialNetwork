@@ -10,7 +10,8 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import { UsersContainer } from "./components/Users/UsersContainer";
 
 // Импортируем функцию updateArray
-import { updateArray } from "./utils"; // Укажите путь к файлу utils.ts
+import { updateArray } from "./utils";
+import Login from "./components/Login/Login"; // Укажите путь к файлу utils.ts
 
 function App() {
   // Добавляем useEffect, чтобы увидеть сообщение при монтировании компонента
@@ -41,6 +42,7 @@ function App() {
               </Route>
               <Route path="/dialog/*" element={<DialogsContainer />} />
               <Route path="/users/*" element={<UsersContainer />} />
+              <Route path="/login/*" element={<Login />} />
             </Routes>
           </div>
         </div>

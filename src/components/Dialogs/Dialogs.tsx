@@ -16,6 +16,7 @@ export type DialogsProps = {
   handleAddName: (name: string) => void; // Ожидаем, что функция принимает аргумент name
   handleTextChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   dialogsState: DialogPageType;
+  isAuth: boolean;
 };
 
 export const Dialogs: React.FC<DialogsProps> = ({
@@ -26,6 +27,7 @@ export const Dialogs: React.FC<DialogsProps> = ({
   name,
   handleTextChange,
   dialogsState,
+  isAuth,
 }) => {
   const { dialogItems, messages, friends } = dialogsState;
 
@@ -44,7 +46,7 @@ export const Dialogs: React.FC<DialogsProps> = ({
       align-items: center;
     }
   `;
-
+  alert(isAuth);
   return (
     <DialogsContainer>
       <DialogsWrapper>

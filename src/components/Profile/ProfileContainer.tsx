@@ -51,17 +51,8 @@ class ProfileContainer extends React.Component<any, initStateType> {
     if (!userId) {
       userId = 2;
     }
-    // this.props.ToggleFeathingAC(true);
+
     this.props.getProfileTC(userId);
-    /*  axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-      .then((response) => {
-        this.props.ToggleFeathingAC(false);
-        this.props.setUserProfile(response.data); // Обновление состояния профиля
-      })
-      .catch((error) => {
-        console.error("Error fetching profile:", error);
-      });*/
   }
 
   render() {

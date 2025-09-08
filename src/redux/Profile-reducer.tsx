@@ -82,17 +82,17 @@ export const setStatusProfileAC = (status: string) => ({
 export const getProfileTC = (userId: string) => async (dispatch: Dispatch) => {
   try {
     // Устанавливаем флаг загрузки в true перед запросом
-    dispatch(ToggleFeathingAC(true));
+    // dispatch(ToggleFeathingAC(true));
     // Получаем данные с API
     const response = await usersAPI.getProfile(userId);
     // После успешного запроса диспатчим данные в store
     dispatch(setUserProfile(response.data));
     // Устанавливаем флаг загрузки в false, когда запрос завершен
-    dispatch(ToggleFeathingAC(false));
+    // dispatch(ToggleFeathingAC(false));
   } catch (error) {
     console.error("Error fetching profile:", error);
     // Устанавливаем флаг загрузки в false, если произошла ошибка
-    dispatch(ToggleFeathingAC(false));
+    // dispatch(ToggleFeathingAC(false));
   }
 };
 // Тип экшенов

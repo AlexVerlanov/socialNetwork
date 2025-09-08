@@ -96,29 +96,6 @@ export const Users: React.FC<UsersPropsType> = ({
   followTC,
   followingInProgress,
 }) => {
-  /* const [isFollowingInProgress, setIsFollowingInProgress] = useState<number[]>(
-    [],
-  );*/
-
-  /*  const handleFollowClick = (userId: number) => {
-    setIsFollowingInProgress((prev) => [...prev, userId]); // Блокируем кнопку
-    usersAPI.follow(userId).then((res) => {
-      if (res.data.resultCode === 0) {
-        FollowAC(userId);
-      }
-      setIsFollowingInProgress((prev) => prev.filter((id) => id !== userId)); // Разблокируем кнопку
-    });
-  };
-
-  const handleUnfollowClick = (userId: number) => {
-    setIsFollowingInProgress((prev) => [...prev, userId]); // Блокируем кнопку
-    usersAPI.unfollow(userId).then((res) => {
-      if (res.data.resultCode === 0) {
-        ufollowAC(userId);
-      }
-      setIsFollowingInProgress((prev) => prev.filter((id) => id !== userId)); // Разблокируем кнопку
-    });
-  };*/
   return (
     <div>
       <Paginator
