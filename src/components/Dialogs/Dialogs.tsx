@@ -46,7 +46,7 @@ export const Dialogs: React.FC<DialogsProps> = ({
       align-items: center;
     }
   `;
-  alert(isAuth);
+
   return (
     <DialogsContainer>
       <DialogsWrapper>

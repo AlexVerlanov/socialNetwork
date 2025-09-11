@@ -2,11 +2,12 @@ import axios, { AxiosResponse } from "axios";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: " https://social-network.samuraijs.com/api/1.0",
+  baseURL: "https://social-network.samuraijs.com/api/1.0",
   headers: {
-    "API-KEY": "89c04748-1848-443c-9909-7e3cd00c4b38",
+    "API-KEY": "78516764-533b-423c-ba99-d0f992af4ba3",
   },
 });
+
 type CommonResponse<T = []> = {
   error: string | null;
   items: T;
