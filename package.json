@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://IamXacer.github.io/socialNetwork",
+  "proxy": "https://social-network.samuraijs.com/api/1.0",
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "@render-with/react-router": "^5.0.0",

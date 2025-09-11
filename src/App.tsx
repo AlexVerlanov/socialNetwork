@@ -30,19 +30,18 @@ function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/socialNetwork">
+        {" "}
+        {/* Добавьте basename */}
         <div className="app-wrapper">
           <HeaderContainer />
           <NavBar />
           <div className="profileWrapperContent">
             <Routes>
-              <Route path={"/profile/:userId?"}>
-                <Route index element={<ProfileContainer />} />
-                <Route path=":userId" index element={<ProfileContainer />} />
-              </Route>
-              <Route path="/dialog/*" element={<DialogsContainer />} />
-              <Route path="/users/*" element={<UsersContainer />} />
-              <Route path="/login/*" element={<Login />} />
+              <Route path="/profile/:userId?" element={<ProfileContainer />} />
+              <Route path="/dialog" element={<DialogsContainer />} />
+              <Route path="/users" element={<UsersContainer />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </div>
         </div>
