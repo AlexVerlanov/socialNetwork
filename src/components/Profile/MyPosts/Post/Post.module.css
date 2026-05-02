@@ -1,0 +1,21 @@
+.item {
+    color: greenyellow;
+    font-size: 18px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.items img {
+    width: 50px;
+    height: 50px;
+}
+
+.likeIcon {
+    margin-top: 10px;
+    transition: transform 0.2s ease;
+}
+
+.likeIcon:hover {
+    transform: scale(1.2); /* эффект увеличения при наведении */
+    filter: drop-shadow(0 0 5px yellow); /* тень при наведении */
+}

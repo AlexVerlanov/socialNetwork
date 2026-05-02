@@ -1,0 +1,89 @@
+.img{
+    width:80px ;
+    height:80px ;
+    border-radius: 50%;
+}
+.container{
+
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems  {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 2px;
+    color: #8a4141;
+}
+/*.selectedPage {
+    border: 1px solid black;
+    font-weight: bold;
+    color: #fff; !* Сделать цвет текста белым *!
+    background-color: #4CAF50; !* Сделать фоновый цвет для выделенной страницы *!
+    padding: 5px 10px; !* Немного увеличим отступы для лучшего восприятия *!
+    cursor: pointer; !* Курсор как указатель *!
+}*/
+
+.backgroundIMG {
+
+    width: 1680px;
+    height: 1046px;
+    padding-left: 10px;
+    background-image: url("https://klike.net/uploads/posts/2022-11/1669446615_3-55.jpg");
+}
+.message {
+    display: flex;
+    list-style-type: none; /* убрать стандартные маркеры для списка */
+    padding: 0; /* убрать внутренний отступ у списка */
+    padding-right: 10px;
+    padding-top: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 0.9em;
+    color: #49dddd;
+
+
+}
+.button {
+    display: inline-block;
+    padding:10px 15px ;
+    background-color: #497c29;
+    border:1px solid #1da1f2 ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.button:focus{
+    outline: none;
+}
+.button:hover{
+    text-decoration: none;
+}
+.selectedPage {
+    font-weight: bold;
+    vertical-align: middle;
+    background-color: #8cc568;
+    border:1px solid #6fa9c9;
+}
+.formSummaryError {
+    border: none;
+    color: #f83030;
+    padding: 2px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+}
+.checkboxContainer{
+    display: flex; /* Используем flex-контейнер для расположения элементов в строку */
+    align-items: center;
+}
+
+.location {
+    margin-bottom: 5px;
+    padding: 2px;
+    font-style: italic;
+    color: #555;
+    margin-top: 5px; ;
+}
+.buttonContainer {
+    margin-left: auto;
+}
