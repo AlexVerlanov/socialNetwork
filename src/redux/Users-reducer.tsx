@@ -118,14 +118,57 @@ export const ToggleFeathingProherssAC = (
   return { type: "TOGGLE_IS_FEATHING_PROGRESS", isFetching, userId } as const;
 };
 
+const mockUsers: UsersType[] = [
+  {
+    id: 1,
+    followed: false,
+    name: "Alex Verlanov",
+    status: "Frontend developer",
+    photoUrl: "",
+    location: {
+      city: "Ulm",
+      country: "Germany",
+    },
+    photos: {
+      small: "",
+      large: "",
+    },
+  },
+  {
+    id: 2,
+    followed: true,
+    name: "React User",
+    status: "Learning React and Redux",
+    photoUrl: "",
+    location: {
+      city: "Berlin",
+      country: "Germany",
+    },
+    photos: {
+      small: "",
+      large: "",
+    },
+  },
+];
+
 export const getUsersTC = (page: number, pageSize: number) => {
   return async (dispatch: Dispatch<ActionTypes>) => {
     dispatch(setCurrentAC(page));
-    // dispatch(ToggleFeathingAC(true));
-    let data = await usersAPI.getUsers(page, pageSize);
-    // dispatch(ToggleFeathingAC(false));
-    dispatch(setUsersAC(data.items));
-    dispatch(setUsersTotalCountAC(data.totalCount));
+    dispatch(ToggleFeathingAC(true));
+
+    try {
+      let data = await usersAPI.getUsers(page, pageSize);
+
+      dispatch(setUsersAC(data.items));
+      dispatch(setUsersTotalCountAC(data.totalCount));
+    } catch (error) {
+      console.log("API blocked on GitHub Pages, using mock users", error);
+
+      dispatch(setUsersAC(mockUsers));
+      dispatch(setUsersTotalCountAC(mockUsers.length));
+    } finally {
+      dispatch(ToggleFeathingAC(false));
+    }
   };
 };
 /*const [isFollowingInProgress, setIsFollowingInProgress] = useState<number[]>(

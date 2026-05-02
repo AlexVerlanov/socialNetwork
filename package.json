@@ -2,6 +2,7 @@
   "name": "ulm-samurai",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alexverlanov.github.io/socialNetwork",
   "proxy": "https://social-network.samuraijs.com/api/1.1",
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
